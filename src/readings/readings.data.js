@@ -1,9 +1,10 @@
 const { meters } = require("../meters/meters");
 
 const generateSingle = () => {
-    const startTime = 1607686125; // Friday, 11 December 2020 11:28:45 GMT+00:00
+    const now = Math.floor(Date.now() / 1000); // Current time in seconds
+    const startTime = now - (2 * 24 * 3600); // Start from 2 days ago
     const hour = 3600;
-    const readingsLength = Math.ceil(Math.random() * 20);
+    const readingsLength = Math.ceil(Math.random() * 20) + 10; // Ensure we have at least 10 readings
 
     return [...new Array(readingsLength)].map((reading, index) => ({
         time: startTime - index * hour,
